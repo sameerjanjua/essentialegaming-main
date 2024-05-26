@@ -14,7 +14,7 @@ import HomePage from './pages/Home';
 import MainPage from './pages/Main';
 import RegisterPage from './pages/Register';
 import LoginPage from './pages/Login';
-import DetailPage from './pages/Detail';
+import ComingDetailPage from './pages/ComingEventDetail';
 import RegisterNowPage from './pages/RegisterNow';
 import CategoryPage from './pages/CategoryPage';
 import FormEditing from './pages/FormEditing';
@@ -33,6 +33,9 @@ import AppLayoutSec from './component/AppLayoutSec';
 import EventPage from './pages/EventsPage';
 import ManageEventPage from './pages/ManageEvents';
 import { useFirebase } from './context/Firebase';
+import LiveCard from './component/Cards/LiveCard';
+import LiveEventsPage from './pages/LiveEvents';
+import PastEventDetailPage from './pages/PastEventDetails';
 
 
 
@@ -80,30 +83,32 @@ function App() {
               !firebase.isLoggedIn ?
                 (
                   <>
-                    <Route path='/signup' Component={RegisterPage} key={14} />
-                    <Route path='/login' Component={LoginPage} key={16} />
+                    <Route path='/signup' Component={RegisterPage} />
+                    <Route path='/login' Component={LoginPage} />
                   </>
                 )
                 : null
             }
-            <Route path='/' Component={MainPage} key={1} />
-            <Route path='/details/:id' Component={DetailPage} key={2} />
-            <Route path='/registrationform' Component={RegisterNowPage} key={3} />
-            <Route path='/events' Component={EventPage} key={4} />
-            <Route path='/*' Component={MainPage} key={5} />
+            <Route path='/' Component={MainPage} />
+            <Route path='/coming-event-details/:id' Component={ComingDetailPage} />
+            <Route path='/past-event-details/:id' Component={PastEventDetailPage} />
+            <Route path='/registrationform' Component={RegisterNowPage} />
+            <Route path='/events' Component={EventPage} />
+            <Route path='/events/live-events' Component={LiveEventsPage} />
+            <Route path='/*' Component={MainPage} />
           </Route>
 
           {
             firebase.isLoggedIn ?
               <Route path='/' Component={AppLayout}>
-                <Route path='/dashboard' Component={DashboardPage} key={6} />
-                <Route path='/home' Component={HomePage} key={7} />
-                <Route path='/category' Component={CategoryPage} key={8} />
-                <Route path='/category/:category' Component={CategoryList} key={9} />
-                <Route path='/formediting' Component={FormEditing} key={10} />
-                <Route path='/profile/:userID' Component={ProfilePage} key={11} />
-                <Route path='/declineforms' Component={DeclineFormsPage} key={12} />
-                <Route path='/manageevents' Component={ManageEventPage} key={13} />
+                <Route path='/dashboard' Component={DashboardPage} />
+                <Route path='/home' Component={HomePage} />
+                <Route path='/category' Component={CategoryPage} />
+                <Route path='/category/:category' Component={CategoryList} />
+                <Route path='/formediting' Component={FormEditing} />
+                <Route path='/profile/:userID' Component={ProfilePage} />
+                <Route path='/declineforms' Component={DeclineFormsPage} />
+                <Route path='/manageevents' Component={ManageEventPage} />
               </Route>
               : null
           }

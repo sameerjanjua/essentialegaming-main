@@ -52,7 +52,7 @@ const ComingEventCmp = () => {
 
     const handleDetails = (eventId) => {
         console.log(eventId);
-        navigate(`/details/${eventId}`);
+        navigate(`/past-event-details/${eventId}`);
     }
 
     useEffect(() => {
